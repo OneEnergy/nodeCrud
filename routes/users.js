@@ -1,5 +1,9 @@
+const controlUsers = require("../controllers/controlUsers")
+
 module.exports = app =>{
-    app.get("/", (req, res)=>{
-        res.send({"message": "Hello World"})
+    app.get("/users", (req, res)=>{
+      controlUsers.readAllUsers().then((result)=> res.send(result)).catch((error) =>{
+        res.send("errir")
+      })
     })
 }

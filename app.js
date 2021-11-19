@@ -1,8 +1,8 @@
 const express = require("./infra/config/customExpress")
-const conexao = require("./infra/config/conexao")
+const conection = require("./infra/config/conection")
 const app = express()
 
-conexao.connect((mysqlError, mysqlResult)=>{
+conection.connect((mysqlError, mysqlResult)=>{
     if(mysqlError){
         console.log({
             "status": "error",
@@ -12,7 +12,7 @@ conexao.connect((mysqlError, mysqlResult)=>{
             app.listen(3390, ()=>{
                 
             const tables = require("./model/tables")
-            console.log("Servidor na porta 3390")
+            console.log("server is running in port 3390")
         })
     }
 })
