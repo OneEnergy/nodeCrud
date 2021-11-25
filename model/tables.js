@@ -1,16 +1,16 @@
 const conection = require("../infra/config/conection")
 class tables {
-    constructor(){
+    constructor() {
         this.users()
     }
 
-    users(){
-        const sqlQuery = "CREATE TABLE IF NOT EXISTS `users` (`idUser` INT NOT NULL,`nameUser` VARCHAR(45) NOT NULL,`emailUser` VARCHAR(45) NULL,`generUser` VARCHAR(45) NOT NULL,PRIMARY KEY (`idUser`));"
-        
-        conection.query(sqlQuery, (mysqlError, mysqlResult)=>{
-            if(mysqlError){
+    users() {
+        const sqlQuery = "CREATE TABLE IF NOT EXISTS `crud`.`users` (`idUser` INT NOT NULL AUTO_INCREMENT,`nameUser` VARCHAR(80) NOT NULL,`generUser` VARCHAR(80) NOT NULL,`emailUser` VARCHAR(80) NOT NULL UNIQUE KEY,`passwordUser` VARCHAR(255) NULL,PRIMARY KEY (`idUser`))"
+
+        conection.query(sqlQuery, (mysqlError, mysqlResult) => {
+            if (mysqlError) {
                 console.log(mysqlError)
-            }else{
+            } else {
                 console.log("tabelas criadas")
             }
         })

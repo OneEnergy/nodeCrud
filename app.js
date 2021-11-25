@@ -1,5 +1,6 @@
 const express = require("./infra/config/customExpress")
 const conection = require("./infra/config/conection")
+const figlet = require('figlet')
 const app = express()
 
 conection.connect((mysqlError, mysqlResult) => {
@@ -9,11 +10,17 @@ conection.connect((mysqlError, mysqlResult) => {
             "message": mysqlError
         })
     } else {
-        console.log(mysqlResult)
         app.listen(3390, () => {
-
             const tables = require("./model/tables")
-            console.log("server is running in port 3390")
+            figlet.text("server is running in port 3390",{  
+                font: "ANSI Shadow",
+                horizontalLayout: "full",
+                verticalLayout: "full",
+                width: 60,
+                whitespaceBreak: true
+            },(error, mensage)=>{
+                console.log(mensage)
+            })
         })
     }
 })
